@@ -92,6 +92,7 @@ placeholder="মোবাইল">
 <textarea
 id="info"
 placeholder="তথ্য লিখুন"></textarea>
+    <input type="file" id="file">
 
 <button onclick="saveData()">
 সংরক্ষণ করুন
@@ -152,11 +153,16 @@ return;
 
 if(editIndex==-1){
 
+let file=document.getElementById("file").files[0];
+
 records.push({
 name:name,
 mobile:mobile,
-info:info
+info:info,
+file:file ? file.name : ""
 });
+
+localStorage.setItem("records",JSON.stringify(records));
 
 }else{
 
