@@ -252,5 +252,37 @@ showData();
 alert("ভুল পাসওয়ার্ড");
 
 }
+function editData(index){
 
+document.getElementById("name").value=records[index].name;
+document.getElementById("mobile").value=records[index].mobile;
+document.getElementById("info").value=records[index].info;
+
+editIndex=index;
+
+}
+
+function deleteData(index){
+
+if(confirm("রেকর্ডটি মুছে ফেলবেন?")){
+
+records.splice(index,1);
+
+localStorage.setItem(
+"records",
+JSON.stringify(records)
+);
+
+showData();
+
+}
+
+}
+
+showData();
+
+</script>
+
+</body>
+</html>
 }
