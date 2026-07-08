@@ -44,9 +44,11 @@
 
 
 <script>
- 
+
 let records = JSON.parse(localStorage.getItem("records")) || [];
 
+
+// লগইন
 function login(){
 
 let password = document.getElementById("pass").value;
@@ -56,6 +58,8 @@ if(password == "1234"){
 document.getElementById("hub").style.display="block";
 document.getElementById("msg").innerHTML="লগইন সফল";
 
+showData();
+
 }else{
 
 document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
@@ -65,25 +69,32 @@ document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড"
 }
 
 
+// তথ্য সংরক্ষণ
 function saveData(){
 
 let name = document.getElementById("name").value;
 let mobile = document.getElementById("mobile").value;
 let info = document.getElementById("info").value;
 
+
 records.push({
+
 name:name,
 mobile:mobile,
 info:info
+
 });
+
 
 localStorage.setItem("records", JSON.stringify(records));
 
+
 showData();
 
-} 
+}
 
 
+// রেকর্ড দেখানো
 function showData(){
 
 let result = "";
@@ -91,41 +102,31 @@ let result = "";
 records.forEach(function(item){
 
 result += `
+
 <p>
 <b>নাম:</b> ${item.name}<br>
 <b>মোবাইল:</b> ${item.mobile}<br>
 <b>তথ্য:</b> ${item.info}
 </p>
+
 <hr>
+
 `;
 
 });
+
 
 document.getElementById("result").innerHTML = result;
 
 }
 
 
+// পেজ চালু হলে পুরোনো ডাটা দেখাবে
 window.onload = function(){
+
 showData();
-}
-
-let password = document.getElementById("pass").value;
-
-if(password == "1234"){
-
-document.getElementById("hub").style.display="block";
-document.getElementById("msg").innerHTML="লগইন সফল";
-
-}else{
-
-document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
 
 }
-
-}
-
-
 
 
 </script>
