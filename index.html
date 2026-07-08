@@ -36,8 +36,10 @@ function login(){
 <textarea placeholder="ডকুমেন্ট / তথ্য লিখুন"></textarea>
 
 <br><br>
+<button onclick="saveData()">সংরক্ষণ করুন</button>
 
-<button>সংরক্ষণ করুন</button>
+<h3>রেকর্ড তালিকা</h3>
+<div id="result"></div>
     `;
   } else {
     document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
