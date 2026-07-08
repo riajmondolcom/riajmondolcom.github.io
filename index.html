@@ -47,7 +47,25 @@
  
 let records = JSON.parse(localStorage.getItem("records")) || [];
 
-function login(){ 
+function login(){
+
+let password = document.getElementById("pass").value;
+
+if(password == "1234"){
+
+document.getElementById("hub").style.display="block";
+document.getElementById("msg").innerHTML="লগইন সফল";
+
+}else{
+
+document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
+
+}
+
+}
+
+
+function saveData(){
 
 let name = document.getElementById("name").value;
 let mobile = document.getElementById("mobile").value;
@@ -63,7 +81,7 @@ localStorage.setItem("records", JSON.stringify(records));
 
 showData();
 
-}
+} 
 
 
 function showData(){
