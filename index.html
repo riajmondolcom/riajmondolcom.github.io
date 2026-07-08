@@ -45,7 +45,52 @@
 
 <script>
 
-function login(){
+function login(){ let records = JSON.parse(localStorage.getItem("records")) || [];
+
+function saveData(){
+
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let info = document.getElementById("info").value;
+
+records.push({
+name:name,
+mobile:mobile,
+info:info
+});
+
+localStorage.setItem("records", JSON.stringify(records));
+
+showData();
+
+}
+
+
+function showData(){
+
+let result = "";
+
+records.forEach(function(item){
+
+result += `
+<p>
+<b>নাম:</b> ${item.name}<br>
+<b>মোবাইল:</b> ${item.mobile}<br>
+<b>তথ্য:</b> ${item.info}
+</p>
+<hr>
+`;
+
+});
+
+document.getElementById("result").innerHTML = result;
+
+}
+
+
+window.onload = function(){
+showData();
+}
 
 let password = document.getElementById("pass").value;
 
@@ -64,25 +109,6 @@ document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড"
 
 
 
-function saveData(){
-
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let info = document.getElementById("info").value;
-
-
-document.getElementById("result").innerHTML +=
-
-`
-<p>
-<b>নাম:</b> ${name}<br>
-<b>মোবাইল:</b> ${mobile}<br>
-<b>তথ্য:</b> ${info}
-</p>
-<hr>
-`;
-
-}
 
 </script>
 
