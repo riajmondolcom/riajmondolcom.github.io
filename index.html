@@ -21,8 +21,23 @@ function login(){
 
   if(password == "1234"){
     document.body.innerHTML = `
-      <h1>স্বাগতম RIAJ Document Hub</h1>
-      <p>এখানে ডকুমেন্ট রাখা যাবে।</p>
+    <h1>স্বাগতম RIAJ Document Hub</h1>
+
+<h3>মানুষের রেকর্ড যোগ করুন</h3>
+
+<input type="text" placeholder="নাম">
+
+<br><br>
+
+<input type="text" placeholder="মোবাইল নম্বর">
+
+<br><br>
+
+<textarea placeholder="ডকুমেন্ট / তথ্য লিখুন"></textarea>
+
+<br><br>
+
+<button>সংরক্ষণ করুন</button>
     `;
   } else {
     document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
