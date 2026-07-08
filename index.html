@@ -1,67 +1,91 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>RIAJ Document Hub</title>
+<meta charset="UTF-8">
+<title>RIAJ Document Hub</title>
 </head>
 
 <body>
-  <h1>RIAJ Document Hub</h1>
 
-  <h3>প্রবেশ করুন</h3>
+<h1>RIAJ Document Hub</h1>
 
-  <input type="password" id="pass" placeholder="পাসওয়ার্ড লিখুন">
-  <button onclick="login()">ঢুকুন</button>
+<h3>প্রবেশ করুন</h3>
 
-  <p id="msg"></p>
+<input type="password" id="pass" placeholder="পাসওয়ার্ড লিখুন">
+<button onclick="login()">ঢুকুন</button>
 
- function saveData(){
+<p id="msg"></p>
 
-let name = document.querySelector('input[placeholder="নাম"]').value;
-let mobile = document.querySelector('input[placeholder="মোবাইল নম্বর"]').value;
-let info = document.querySelector('textarea').value;
 
-document.getElementById("result").innerHTML += `
+<div id="hub" style="display:none;">
+
+<h3>মানুষের রেকর্ড যোগ করুন</h3>
+
+<input type="text" id="name" placeholder="নাম">
+
+<br><br>
+
+<input type="text" id="mobile" placeholder="মোবাইল নম্বর">
+
+<br><br>
+
+<textarea id="info" placeholder="ডকুমেন্ট / তথ্য লিখুন"></textarea>
+
+<br><br>
+
+<button onclick="saveData()">সংরক্ষণ করুন</button>
+
+
+<h3>রেকর্ড তালিকা</h3>
+
+<div id="result"></div>
+
+</div>
+
+
+<script>
+
+function login(){
+
+let password = document.getElementById("pass").value;
+
+if(password == "1234"){
+
+document.getElementById("hub").style.display="block";
+document.getElementById("msg").innerHTML="লগইন সফল";
+
+}else{
+
+document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
+
+}
+
+}
+
+
+
+function saveData(){
+
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let info = document.getElementById("info").value;
+
+
+document.getElementById("result").innerHTML +=
+
+`
 <p>
-নাম: ${name}<br>
-মোবাইল: ${mobile}<br>
-তথ্য: ${info}
+<b>নাম:</b> ${name}<br>
+<b>মোবাইল:</b> ${mobile}<br>
+<b>তথ্য:</b> ${info}
 </p>
 <hr>
 `;
 
-} 
-<script>
-function login(){
-  var password = document.getElementById("pass").value;
-
-  if(password == "1234"){
-    document.body.innerHTML = `
-    <h1>স্বাগতম RIAJ Document Hub</h1>
-
-<h3>মানুষের রেকর্ড যোগ করুন</h3>
-
-<input type="text" placeholder="নাম">
-
-<br><br>
-
-<input type="text" placeholder="মোবাইল নম্বর">
-
-<br><br>
-
-<textarea placeholder="ডকুমেন্ট / তথ্য লিখুন"></textarea>
-
-<br><br>
-<button onclick="saveData()">সংরক্ষণ করুন</button>
-
-<h3>রেকর্ড তালিকা</h3>
-<div id="result"></div>
-    `;
-  } else {
-    document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
-  }
 }
+
 </script>
+
 
 </body>
 </html>
