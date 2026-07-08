@@ -150,7 +150,91 @@ localStorage.getItem("records")
 
 let editIndex = -1;
 
-function login(){
+function login(){ function saveData(){
+
+let name=document.getElementById("name").value.trim();
+let mobile=document.getElementById("mobile").value.trim();
+let info=document.getElementById("info").value.trim();
+
+if(name=="" || mobile=="" || info==""){
+alert("সব তথ্য পূরণ করুন");
+return;
+}
+
+if(editIndex==-1){
+
+records.push({
+name:name,
+mobile:mobile,
+info:info
+});
+
+}else{
+
+records[editIndex]={
+name:name,
+mobile:mobile,
+info:info
+};
+
+editIndex=-1;
+
+}
+
+localStorage.setItem("records",JSON.stringify(records));
+
+document.getElementById("name").value="";
+document.getElementById("mobile").value="";
+document.getElementById("info").value="";
+
+showData();
+
+}
+
+function showData(){
+
+let result="";
+
+records.forEach(function(item,index){
+
+result+=`
+
+<div class="record">
+
+<b>নাম:</b> ${item.name}<br>
+<b>মোবাইল:</b> ${item.mobile}<br>
+<b>তথ্য:</b> ${item.info}<br><br>
+
+<button onclick="editData(${index})">এডিট</button>
+
+<button onclick="deleteData(${index})">ডিলিট</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("result").innerHTML=result;
+
+}
+
+function searchData(){
+
+let search=document.getElementById("search").value.toLowerCase();
+
+let result="";
+
+records.forEach(function(item,index){
+
+if(
+item.name.toLowerCase().includes(search) ||
+item.mobile.includes(search)
+){
+
+result+=`
+
+<div
 
 let pass =
 document.getElementById("pass").value;
