@@ -131,7 +131,32 @@ document.getElementById("result").innerHTML = result;
 // পেজ চালু হলে পুরোনো ডাটা দেখাবে
 window.onload = function(){
 
-showData();
+showData();function searchData(){
+
+let search = document.getElementById("search").value.toLowerCase();
+
+let result = "";
+
+records.forEach(function(item){
+
+if(item.name.toLowerCase().includes(search) || item.mobile.includes(search)){
+
+result += `
+<p>
+<b>নাম:</b> ${item.name}<br>
+<b>মোবাইল:</b> ${item.mobile}<br>
+<b>তথ্য:</b> ${item.info}
+</p>
+<hr>
+`;
+
+}
+
+});
+
+document.getElementById("result").innerHTML = result;
+
+}
 
 }
 
