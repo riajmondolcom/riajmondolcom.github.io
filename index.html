@@ -12,7 +12,6 @@
 <h3>প্রবেশ করুন</h3>
 
 <input type="password" id="pass" placeholder="পাসওয়ার্ড লিখুন">
-
 <button onclick="login()">ঢুকুন</button>
 
 <p id="msg"></p>
@@ -37,6 +36,15 @@
 <button onclick="saveData()">সংরক্ষণ করুন</button>
 
 
+<h3>রেকর্ড খুঁজুন</h3>
+
+<input type="text" id="search" placeholder="নাম বা মোবাইল লিখুন">
+
+<button onclick="searchData()">খুঁজুন</button>
+
+<br><br>
+
+
 <h3>রেকর্ড তালিকা</h3>
 
 <div id="result"></div>
@@ -45,16 +53,21 @@
 
 
 <script>
-  let records = JSON.parse(localStorage.getItem("records")) || [];
 
+let records = JSON.parse(localStorage.getItem("records")) || [];
+
+
+// লগইন
 function login(){
 
 let password = document.getElementById("pass").value;
 
-if(password == "1234"){
+if(password=="1234"){
 
 document.getElementById("hub").style.display="block";
 document.getElementById("msg").innerHTML="লগইন সফল";
+
+showData();
 
 }else{
 
@@ -63,3 +76,99 @@ document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড"
 }
 
 }
+
+
+// সংরক্ষণ
+function saveData(){
+
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+let info = document.getElementById("info").value;
+
+
+records.push({
+
+name:name,
+mobile:mobile,
+info:info
+
+});
+
+
+localStorage.setItem("records",JSON.stringify(records));
+
+
+showData();
+
+}
+
+
+// সব রেকর্ড দেখানো
+function showData(){
+
+let result="";
+
+
+records.forEach(function(item){
+
+result += `
+
+<p>
+<b>নাম:</b> ${item.name}<br>
+<b>মোবাইল:</b> ${item.mobile}<br>
+<b>তথ্য:</b> ${item.info}
+</p>
+
+<hr>
+
+`;
+
+});
+
+
+document.getElementById("result").innerHTML=result;
+
+}
+
+
+// সার্চ
+function searchData(){
+
+let search = document.getElementById("search").value.toLowerCase();
+
+let result="";
+
+
+records.forEach(function(item){
+
+if(
+item.name.toLowerCase().includes(search) ||
+item.mobile.includes(search)
+){
+
+result += `
+
+<p>
+<b>নাম:</b> ${item.name}<br>
+<b>মোবাইল:</b> ${item.mobile}<br>
+<b>তথ্য:</b> ${item.info}
+</p>
+
+<hr>
+
+`;
+
+}
+
+});
+
+
+document.getElementById("result").innerHTML=result;
+
+}
+
+
+</script>
+
+</body>
+</html>
