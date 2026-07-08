@@ -110,4 +110,63 @@ placeholder="মোবাইল">
 
 <textarea
 id="info"
-placeholder="তথ্য লিখ
+placeholder="তথ্য লিখুন"></textarea>
+
+<button onclick="saveData()">
+সংরক্ষণ করুন
+</button>
+
+<hr>
+
+<h3>সার্চ</h3>
+
+<input
+type="text"
+id="search"
+placeholder="নাম বা মোবাইল">
+
+<button onclick="searchData()">
+খুঁজুন
+</button>
+
+<button onclick="showData()">
+সব দেখুন
+</button>
+
+<hr>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<script>
+
+let records =
+JSON.parse(
+localStorage.getItem("records")
+) || [];
+
+let editIndex = -1;
+
+function login(){
+
+let pass =
+document.getElementById("pass").value;
+
+if(pass=="1234"){
+
+document.getElementById("loginBox").style.display="none";
+
+document.getElementById("mainBox").style.display="block";
+
+showData();
+
+}else{
+
+alert("ভুল পাসওয়ার্ড");
+
+}
+
+}
