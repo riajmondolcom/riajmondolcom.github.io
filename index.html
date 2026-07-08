@@ -4,8 +4,31 @@
   <meta charset="UTF-8">
   <title>RIAJ Document Hub</title>
 </head>
+
 <body>
-  <h1>স্বাগতম</h1>
-  <p>RIAJ Document Hub তৈরি হচ্ছে...</p>
+  <h1>RIAJ Document Hub</h1>
+
+  <h3>প্রবেশ করুন</h3>
+
+  <input type="password" id="pass" placeholder="পাসওয়ার্ড লিখুন">
+  <button onclick="login()">ঢুকুন</button>
+
+  <p id="msg"></p>
+
+<script>
+function login(){
+  var password = document.getElementById("pass").value;
+
+  if(password == "1234"){
+    document.body.innerHTML = `
+      <h1>স্বাগতম RIAJ Document Hub</h1>
+      <p>এখানে ডকুমেন্ট রাখা যাবে।</p>
+    `;
+  } else {
+    document.getElementById("msg").innerHTML="ভুল পাসওয়ার্ড";
+  }
+}
+</script>
+
 </body>
 </html>
